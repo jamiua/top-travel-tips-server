@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
-// const destinationRoutes = require('./routes/destinations');
+const destinationRoutes = require('./routes/destinations');
 // const categoryRoute = require("./routes/categories");
 // const multer = require("multer");
 // const path = require("path");
@@ -36,7 +36,7 @@ app.get('/', (req,res)=>{
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-// app.use("/api/destinations", destinationRoutes);
+app.use("/api/destinations", destinationRoutes);
 // app.use("/api/categories", categoryRoute);
 
 app.listen(PORT, function() {

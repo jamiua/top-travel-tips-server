@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const DestinationSchema = new mongoose.Schema(
   {
+    username: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -14,10 +18,6 @@ const DestinationSchema = new mongoose.Schema(
     photo: {
       type: String,
       required: false,
-    },
-    username: {
-      type: String,
-      required: true,
     },
     categories: {
       type: Array,
