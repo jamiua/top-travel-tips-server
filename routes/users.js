@@ -38,9 +38,9 @@ router.delete("/:id", async (req, res) => {
         try {
             const user = await User.findById(req.params.id);
             try {
-                // Delete all destination posts associated with this user
+                // Delete all destination posts associated with this user from mongoDB atlas server
                 await Destination.deleteMany({ username: user.username });
-                // Delete this users credentials from database
+                // Delete this users credentials from mongoDB atlas server
                 await User.findByIdAndDelete(req.params.id);
                 res.status(200).json("User profile has been deleted...");
             } 
@@ -71,4 +71,5 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Export the router for use in index.js
 module.exports = router;

@@ -20,7 +20,7 @@ router.put("/:id", async (req, res) => {
         // Find queried destination post
         const destination = await Destination.findById(req.params.id);
 
-        // Compare current destination username with submitted username
+        // Compare current destination username with submitted username to ensure authentication
         if (destination.username === req.body.username) {
             try {
                 const updatedDestination = await Destination.findByIdAndUpdate(
@@ -50,10 +50,10 @@ router.delete("/:id", async (req, res) => {
         // Set current destination info to queried destination by Id
         const destination = await Destination.findById(req.params.id);
 
-        // Compare current destination info username to received username
+        // Compare current destination info username to received username to ensure authentication
         if (destination.username === req.body.username) {
             try {
-                // Delete this users destination from database
+                // Delete this user's destination info from mongoDB atlas server
                 await destination.delete();
                 res.status(200).json("Destination details have been deleted...");
             } catch (err) {
