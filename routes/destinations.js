@@ -80,7 +80,7 @@ router.get("/:id", async (req, res) => {
 // Get all destination info
 router.get("/", async (req, res) => {
     const username = req.query.user;
-    const categoryName = req.query.cat;
+    const categoryName = req.query.country;
     try {
 
         // Destination info can change

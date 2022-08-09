@@ -26,17 +26,20 @@ mongoose.connect(process.env.MONGO_URL)
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "images"); // Callback to handle error and server destination folder
+        cb(null, "images"); // Callback to handle error and server destination folder
     },
     filename: (req, file, cb) => {
-      cb(null, req.body.imgname); // Callack to handle error and client upload filename
+
+        // cb(null, "newimage");
+        cb(null, file.originalname);
+        // cb(null, req.body.imgname); // Callack to handle error and client upload filename
     },
 });
 
 const upload = multer({ storage: storage });
 // Upload one file at a time using /upload url
 app.post("/upload", upload.single("file"), (req, res) => {
-  res.status(200).json("Your image file was successfully uploaded");
+    res.status(200).json("Your image file was successfully uploaded");
 });
 
 app.use("/auth", authRoute);
